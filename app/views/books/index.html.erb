@@ -1,0 +1,9 @@
+<h2>Books</h2>
+<h3>タイトル・オピニオン</h3>
+<% @books.each do |book| %>
+<div>
+  <p>投稿ユーザー画像(リンクあり)</p>
+  <p>title：<%= book.title %></p>
+  <p>opinion：<%= book.body %></p>
+</div>
+<% end %>
