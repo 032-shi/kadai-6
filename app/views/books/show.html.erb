@@ -1,7 +1,15 @@
-<div>
-  <p>ユーザー画像（リンクあり）</p>
-  <%= link_to @book.title, book_path(@book) %>
-  <p><%= @book.body %></p>
-  <p>Edit</p>
-  <p>Destroy</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/list', user: @book.user, book: Book.new %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <p>ユーザー画像（リンクあり）</p>
+      <%= link_to @book.title, book_path(@book) %>
+      <p><%= @book.body %></p>
+      <p>Edit</p>
+      <p>Destroy</p>
+    </div>
+  </div>
 </div>
