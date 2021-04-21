@@ -16,3 +16,27 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.navbar-nav{
+  width: 100%;
+}
+
+.btn-login{
+  width: 100%;
+  background-color: #17a2b8;
+  margin-bottom:10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-signup{
+  width: 100%;
+  background-color: #28a745;
+  margin-bottom:10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-top{
+  color: #fff;
+}

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class='mx-auto col-auto'>
+    <div class='mx-auto col-xl-6'>
       <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong>  !!</h1>
       <p>In  <i class="fas fa-book"></i><strong>Bookers</strong>, </p>
       <p>you can share and exchange  your opinions , inpressions , and emotions</p>
@@ -9,13 +9,21 @@
   </div>
 
   <div class="row">
-    <div class="mx-auto col-auto">
+    <div class="mx-auto col-xl-6">
       <% if user_signed_in? %>
-        <div><%= link_to "Log in", user_path(current_user.id), class: 'btn btn-login' %></div>
-        <div><%= link_to "Sing Up", user_path(current_user.id), class: 'btn btn-login' %></div>
+        <div class="btn-login">
+          <%= link_to "Log in", user_path(current_user.id), class: 'btn-top' %>
+        </div>
+        <div class="btn-signup">
+          <%= link_to "Sign Up", user_path(current_user.id), class: 'btn-top' %>
+        </div>
       <% else %>
-        <div><%= link_to "Log in", new_user_session_path, class: 'btn btn-login' %></div>
-        <div><%= link_to "Sing Up", new_user_registration_path, class: 'btn btn-login' %></div>
+        <div class="btn-login">
+          <%= link_to "Log in", new_user_session_path, class: 'btn-top' %>
+        </div>
+        <div class="btn-signup">
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn-top' %>
+        </div>
       <% end %>
     </div>
   </div>
