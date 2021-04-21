@@ -69,12 +69,32 @@
   border-style: solid;
 }
 
+.userupdatebtn{
+  color: #fff;
+  background-color: #6c757d;
+  border-radius: 5px;
+  border-color: #6c757d;
+  border-style: solid;
+}
+
 .bookdltbtn{
   color: #fff;
   background-color: #dc3545;
   border-radius: 5px;
   border-color: #dc3545;
   border-style: solid;
+}
+
+.loginbtn{
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  border-color: #007bff;
+  border-style: solid;
+}
+
+table{
+  width: 100%;
 }
 
 th{
@@ -85,4 +105,8 @@ th{
 td{
   padding: 15px;
   border-top: 1px solid #dee2e6;
+}
+
+#success{
+  color: #28a745;
 }
