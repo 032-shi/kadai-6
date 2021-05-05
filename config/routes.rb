@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update, :index]
+
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 end
