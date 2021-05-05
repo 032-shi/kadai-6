@@ -15,7 +15,11 @@
   </tr>
   <tr>
     <th>followers</th>
-    <th><%= user.followed.count %></th>
+    <th>
+      <%= link_to user_follower_path(user.id) do %>
+      <%= user.followed.count %>
+      <% end %>
+    </th>
   </tr>
 </table>
 <% if user == current_user %>
