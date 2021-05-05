@@ -1,6 +1,6 @@
 <h2>User info</h2>
 <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-<table>
+<table class="table">
   <tr>
     <th>name</th>
     <th><%= user.name %></th>
@@ -9,12 +9,32 @@
     <th>introduction</th>
     <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= user.follower.count %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= user.followed.count %></th>
+  </tr>
 </table>
-<div class="usereditbtn">
-  <%= link_to edit_user_path(user.id) do %>
-    <i class="fas fa-user-cog fa-gray"></i>
+<% if user == current_user %>
+  <div class="usereditbtn">
+    <%= link_to edit_user_path(user.id) do %>
+      <i class="fas fa-user-cog fa-gray"></i>
+    <% end %>
+  </div>
+<% else %>
+  <% if current_user.following?(@user) %>
+    <%= link_to unfollow_path(user.id), method: :POST, class: "unfollowbtn"  do %>
+    <span>フォローを外す</span>
+    <% end %>
+  <% else %>
+    <%= link_to follow_path(user.id), method: :POST, class: "followbtn" do %>
+    <span>フォローする</span>
+    <% end %>
   <% end %>
-</div>
+<% end %>
 
 <h1>New book</h1>
 <%= form_with model: book, local:true do |f| %>
