@@ -1,10 +1,34 @@
 <% if @range == "User" %>
-<p>Users seach for</p>
-  <% @users.each do |user| %>
-    <%= user.name %>
-  <% end %>
+<h1>Users seach for"<%= params[:word] %>"</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
+          <td><%= user.name %></td>
+          <td><span>フォロー数:<%= user.follower.count %></span></td>
+          <td><span>フォロワー数:<%= user.followed.count %></span></td>
+          <td>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <% end %>
+          </td>
+          <td><%= link_to "Show", user_path(user.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-<p>Books seach for<%= word %></p>
+<h1>Books seach for "<%= params[:word] %>"</h1>
   <table class="table table-hover">
     <thead>
       <tr>
