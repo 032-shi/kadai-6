@@ -20,15 +20,29 @@ class User < ApplicationRecord
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
-  
+
   # ユーザーのフォローを外す
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
-  
+
   # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
+  end
+
+  def self.looks(search,word)
+    if search == "forward_match"
+      @users = User.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @users = User.where("name LIKE?","%#{word}")
+    elsif search == "perfect_match"
+      @users = User.where("#{word}")
+    elsif search == "partial_match"
+      @users = User.where("name LIKE?","%#{word}%")
+    else
+      @users = User.all
+    end
   end
 
 end
